@@ -1,6 +1,6 @@
 # AI Chatbot
 
-A modern, full-stack AI Chatbot application built with Python, FastAPI, and OpenAI.
+A modern, full-stack AI Chatbot application built with Python, FastAPI, and OpenRouter.
 
 ## Features
 
@@ -34,7 +34,7 @@ A modern, full-stack AI Chatbot application built with Python, FastAPI, and Open
 ### Prerequisites
 
 - Python 3.9+
-- An OpenAI API key (https://platform.openai.com/api-keys)
+- An OpenRouter API key (https://openrouter.ai/keys)
 
 ### Installation
 
@@ -58,7 +58,7 @@ A modern, full-stack AI Chatbot application built with Python, FastAPI, and Open
 4. Set up environment variables:
    ```bash
    cp .env.example .env
-   # Edit .env and add your OPENAI_API_KEY
+   # Edit .env and add your OPENROUTER_API_KEY
    ```
 
 5. Run the application:
@@ -96,8 +96,9 @@ Response:
 
 | Variable | Description | Required |
 |----------|-------------|----------|
-| `OPENAI_API_KEY` | Your OpenAI API key | Yes |
-| `OPENAI_MODEL` | Model to use (default: gpt-3.5-turbo) | No |
+| `OPENROUTER_API_KEY` | Your OpenRouter API key | Yes |
+| `OPENROUTER_MODEL` | Model to use (default: openrouter/auto) | No |
+| `OPENROUTER_BASE_URL` | OpenRouter API base URL (default: https://openrouter.ai/api/v1) | No |
 | `PORT` | Server port (default: 8000) | No |
 
 ## License

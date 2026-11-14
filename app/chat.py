@@ -8,11 +8,15 @@ load_dotenv()
 
 class ChatService:
     def __init__(self):
-        self.api_key = os.getenv("OPENAI_API_KEY")
-        self.model = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
+        self.api_key = os.getenv("OPENROUTER_API_KEY")
+        self.model = os.getenv("OPENROUTER_MODEL", "openrouter/auto")
+        self.base_url = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
         self.client = None
         if self.api_key:
-            self.client = OpenAI(api_key=self.api_key)
+            self.client = OpenAI(
+                api_key=self.api_key,
+                base_url=self.base_url,
+            )
         self.sessions: Dict[str, List[dict]] = {}
 
     def get_session_messages(self, session_id: Optional[str]) -> List[dict]:
@@ -26,7 +30,7 @@ class ChatService:
 
     async def get_response(self, message: str, session_id: Optional[str] = None) -> str:
         if not self.client:
-            return "I'm sorry, the OpenAI API key is not configured. Please set OPENAI_API_KEY in your environment variables."
+            return "I'm sorry, the OpenRouter API key is not configured. Please set OPENROUTER_API_KEY in your environment variables."
 
         history = self.get_session_messages(session_id)
 
